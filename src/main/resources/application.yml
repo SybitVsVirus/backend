@@ -1,3 +1,18 @@
 spring:
   swagger:
     basepath: ""
+
+    datasource:
+      url: jdbc:h2:mem:phoneassistent;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS phoneassistent
+      password:
+      platform: h2
+      username: root
+      driver-class-name: org.h2.Driver
+
+cloud:
+  aws:
+    region:
+      static: "eu-west-1"
+
+    stack:
+      auto: false
