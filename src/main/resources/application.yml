@@ -5,7 +5,7 @@ spring:
 cloud:
   aws:
     region:
-      static: "eu-west-1"
+      static: "eu-central-1"
 
     stack:
       auto: false
