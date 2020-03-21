@@ -5,6 +5,30 @@ public class JsonResponse {
     protected Object data = null;
     protected Object error = null;
 
+    public static JsonResponse success() {
+        JsonResponse resp = new JsonResponse();
+        resp.setSuccess(true);
+        return resp;
+    }
+
+    public static JsonResponse withData(final Object data) {
+        JsonResponse resp = JsonResponse.success();
+        resp.setData(data);
+        return resp;
+    }
+
+    public static JsonResponse failure() {
+        JsonResponse resp = new JsonResponse();
+        resp.setSuccess(false);
+        return resp;
+    }
+
+    public static JsonResponse withError(final Object data) {
+        JsonResponse resp = JsonResponse.failure();
+        resp.setError(data);
+        return resp;
+    }
+
     public boolean isSuccess() {
         return success;
     }
