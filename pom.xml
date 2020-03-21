@@ -15,7 +15,9 @@
     <description>Corona Phone Assistant</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     </properties>
 
