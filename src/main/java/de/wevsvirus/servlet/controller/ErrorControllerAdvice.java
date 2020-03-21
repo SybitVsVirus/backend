@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ErrorControllerAdvice {
+
     @ExceptionHandler(Exception.class)
     public JsonResponse generalError() {
-        JsonResponse resp = new JsonResponse();
-        resp.setSuccess(false);
-        resp.setError("Es ist ein allgemeiner Fehler aufgetreten!");
-        return resp;
+        return JsonResponse.withError("Es ist ein allgemeiner Fehler aufgetreten!");
     }
 }

@@ -1,31 +1,34 @@
 package de.wevsvirus.servlet.controller.data;
 
 public class JsonResponse {
-    protected boolean success = false;
-    protected Object data = null;
-    protected Object error = null;
+
+    private final boolean success;
+    private final Object data;
+    private final Object error;
+
+    private JsonResponse(final boolean success, final Object data, final Object error) {
+        this.success = success;
+        this.data = data;
+        this.error = error;
+    }
 
     public boolean isSuccess() {
         return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
     }
 
     public Object getData() {
         return data;
     }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
-
     public Object getError() {
         return error;
     }
 
-    public void setError(Object error) {
-        this.error = error;
+    public static JsonResponse withData(final Object data) {
+        return new JsonResponse(true, data, null);
+    }
+
+    public static JsonResponse withError(final Object error) {
+        return new JsonResponse(false, null, error);
     }
 }
