@@ -1,6 +1,6 @@
 package de.wevsvirus.servlet.controller;
 
-import de.wevsvirus.facades.ArztFacade;
+import de.wevsvirus.facade.impl.ArztFacade;
 import de.wevsvirus.servlet.controller.data.JsonResponse;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

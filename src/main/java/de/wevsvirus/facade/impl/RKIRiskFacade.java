@@ -1,4 +1,4 @@
-package de.wevsvirus.facades;
+package de.wevsvirus.facade.impl;
 
 import com.amazonaws.services.polly.AmazonPolly;
 import com.amazonaws.services.polly.model.*;
