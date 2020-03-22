@@ -13,4 +13,5 @@ public interface ArztRepository extends CrudRepository<ArztModel, String> {
     Optional<ArztModel> findByUid(String uid);
 
     List<ArztModel> findByPlz(String plz);
+    List<ArztModel> findByPhoneNumber(String phoneNumber);
 }

@@ -23,7 +23,6 @@ public class SwaggerConfiguration {
         this.swaggerProperties = swaggerProperties;
     }
 
-
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -31,7 +30,8 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.any())
                 .paths(
                         or(
-                                regex("/hello.*")
+                                regex("/arzt.*"),
+                                regex("/call-statistics.*")
 
                                 ))
                 .build().pathMapping(swaggerProperties.getBasepath())

@@ -1,4 +1,4 @@
-package de.wevsvirus.facades;
+package de.wevsvirus.facade.impl;
 
 import com.amazonaws.services.polly.AmazonPolly;
 import com.amazonaws.services.polly.model.*;
@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import de.wevsvirus.facade.RKIRiskFacade;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,7 +21,7 @@ import java.net.URL;
 import java.util.stream.Collectors;
 
 @Service
-public class RKIRiskFacade {
+public class DefaultRKIRiskFacade implements RKIRiskFacade {
     @Resource
     private AmazonPolly polly;
 
@@ -36,6 +37,7 @@ public class RKIRiskFacade {
     @Value("${CONNECT_BUCKET_RISKAREAS_KEY:riskareas.mp3}")
     private String voiceBucketKey;
 
+    @Override
     public String updateRiskAudio() throws IOException {
         //get current riskareas
         final Document riskData = Jsoup.parse(new URL(riskUrl), 10000);
@@ -72,9 +74,5 @@ public class RKIRiskFacade {
         amazonS3.putObject(putObjectRequest);
 
         return bucketUrl;
-    }
-
-    public String getS3BucketPath() {
-        return "blubb";
     }
 }
