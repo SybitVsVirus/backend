@@ -13,27 +13,19 @@ public class JsonResponse {
     }
 
     public static JsonResponse success() {
-        JsonResponse resp = new JsonResponse();
-        resp.setSuccess(true);
-        return resp;
+        return new JsonResponse(true, null, null);
     }
 
     public static JsonResponse withData(final Object data) {
-        JsonResponse resp = JsonResponse.success();
-        resp.setData(data);
-        return resp;
+        return new JsonResponse(true, data, null);
     }
 
     public static JsonResponse failure() {
-        JsonResponse resp = new JsonResponse();
-        resp.setSuccess(false);
-        return resp;
+        return new JsonResponse(false, null, null);
     }
 
-    public static JsonResponse withError(final Object data) {
-        JsonResponse resp = JsonResponse.failure();
-        resp.setError(data);
-        return resp;
+    public static JsonResponse withError(final Object error) {
+        return new JsonResponse(false, null, error);
     }
 
     public boolean isSuccess() {
@@ -48,11 +40,4 @@ public class JsonResponse {
         return error;
     }
 
-    public static JsonResponse withData(final Object data) {
-        return new JsonResponse(true, data, null);
-    }
-
-    public static JsonResponse withError(final Object error) {
-        return new JsonResponse(false, null, error);
-    }
 }

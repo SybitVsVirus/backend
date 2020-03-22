@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,18 +28,7 @@ public class ArztFacade {
                     .limit(10L)
                     .collect(Collectors.toList());
         } else {
-            aerzte = new ArrayList<>(10);
-
-            for (int i = 0; i < 10; i++) {
-                ArztModel arzt = new ArztModel();
-                arzt.setPlz(cleanPlz);
-                arzt.setPhoneNumber(faker.phoneNumber().phoneNumber());
-                arzt.setFreeTimeSlots(faker.number().numberBetween(0, 10));
-                arzt.setCoronaTester(faker.bool().bool());
-                aerzte.add(arzt);
-            }
-
-            return aerzte;
+            return Collections.emptyList();
         }
     }
 }
