@@ -1,6 +1,5 @@
 package de.wevsvirus.facades;
 
-import com.github.javafaker.Faker;
 import de.wevsvirus.data.ArztRepository;
 import de.wevsvirus.model.ArztModel;
 import org.springframework.stereotype.Service;
@@ -13,8 +12,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class ArztFacade {
-
-    private Faker faker = new Faker();
 
     @Resource
     private ArztRepository arztRepository;
