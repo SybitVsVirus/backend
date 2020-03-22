@@ -12,10 +12,7 @@ public class ErrorControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     public JsonResponse generalError(Exception e) {
-        JsonResponse resp = new JsonResponse();
-        resp.setSuccess(false);
-        resp.setError("Es ist ein allgemeiner Fehler aufgetreten!");
         log.error(String.format("Fehler: %s", e.getMessage()), e);
-        return resp;
+        return JsonResponse.withError("Es ist ein allgemeiner Fehler aufgetreten!");
     }
 }
