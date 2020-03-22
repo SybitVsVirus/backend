@@ -1,4 +1,4 @@
-package de.wevsvirus.facades;
+package de.wevsvirus.facade.impl;
 
 import de.wevsvirus.data.ArztRepository;
 import de.wevsvirus.model.ArztModel;
