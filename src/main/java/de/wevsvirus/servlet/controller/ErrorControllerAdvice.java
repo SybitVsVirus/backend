@@ -11,9 +11,4 @@ public class ErrorControllerAdvice {
     public JsonResponse generalError() {
         return JsonResponse.withError("Es ist ein allgemeiner Fehler aufgetreten!");
     }
-
-    @ExceptionHandler(SecurityException.class)
-    public JsonResponse securityException(final SecurityException ex) {
-        return JsonResponse.withError(ex.getMessage());
-    }
 }

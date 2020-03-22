@@ -4,6 +4,8 @@ import de.wevsvirus.facade.CallStatisticFacade;
 import de.wevsvirus.servlet.controller.data.CallStatisticUpdateDTO;
 import de.wevsvirus.servlet.controller.data.JsonResponse;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/call-statistics")
 public class CallStatisticsController {
 
+    private static final Log LOG = LogFactory.getLog(CallStatisticsController.class);
+
     private final CallStatisticFacade callStatisticFacade;
 
-    @Value("${CALL_STATS_API_TOKEN}")
+    @Value("${CALL_STATS_API_TOKEN:dummy_token}")
     private String statsAPIToken;
 
     public CallStatisticsController(final CallStatisticFacade callStatisticFacade) {
@@ -35,7 +39,7 @@ public class CallStatisticsController {
         if (token.equals(statsAPIToken)) {
             callStatisticFacade.updateCallStatistic(callStatisticUpdateDTO);
         } else {
-            throw new SecurityException("Call statistics api token not valid.");
+            LOG.warn("Call statistics api token not valid.");
         }
     }
 
