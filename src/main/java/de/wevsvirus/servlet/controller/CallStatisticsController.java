@@ -1,8 +1,8 @@
 package de.wevsvirus.servlet.controller;
 
 import de.wevsvirus.facade.CallStatisticFacade;
+import de.wevsvirus.servlet.controller.data.CallStatisticDTO;
 import de.wevsvirus.servlet.controller.data.CallStatisticUpdateDTO;
-import de.wevsvirus.servlet.controller.data.JsonResponse;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -45,7 +45,6 @@ public class CallStatisticsController {
 
     @ApiOperation(value = "Returns call statistics.")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public JsonResponse getCallStatistics() {
-        return JsonResponse.withData(callStatisticFacade.getCallStatistics());
+    public CallStatisticDTO getCallStatistics() { return callStatisticFacade.getCallStatistics();
     }
 }
